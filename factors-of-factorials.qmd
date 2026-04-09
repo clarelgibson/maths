@@ -1,0 +1,105 @@
+---
+title: "Factors of factorials"
+author: "Clare Gibson"
+date: "2025-07-06"
+format:
+  gfm:
+    toc: true
+    toc-depth: 2
+---
+
+# Introduction
+In maths, there is a concept called **factorial** which works like this:
+
+$$
+\begin{align}
+2!&=2\times1=2\\
+3!&=3\times2\times1=6\\
+4!&=4\times3\times2\times1=24
+\end{align}
+$$
+
+The factors of an integer are the integers that divide equally into it. The factors of $2!$ are 1 and 2. There are two factors.
+
+$$
+\begin{align}
+\textsf{Factors of 2! (=2):}\\
+\quad 1, 2\\
+\\
+\textsf{Factors of 3! (=6):}\\
+\quad 1,2,3,6\\
+\\
+\textsf{Factors of 4! (=24):}\\
+\quad 1,2,3,4,6,8,12,24
+\end{align}
+$$
+
+The relationship between factorials and factors looks like this:
+
+|$n$|$n!$|number of factors of $n$|
+|:---|:---|:---|
+|1   |1   |1   |
+|2   |2   |2   |
+|3   |6   |4   |
+|4   |24  |8   |
+
+# Questions
+
+- How many factors has $5!$ got?
+- How many factors has $6!$ got?
+- What pattern do you notice?
+
+# Analysis
+
+In the `src/factors-of-factorials.R` script I have written a function called `get_factors()` which takes an integer as input and returns a list of the factors of that integer. I will load the script so that I can use this function.
+
+```{r}
+#| label: setup
+#| warnings: false
+#| output: false
+
+library(here)
+library(tidyverse)
+library(knitr)
+
+source(here("src/factors-of-factorials.R"))
+```
+
+I can test the function using one of the integers we already outlined above.
+
+```{r}
+#| label: test-function
+
+get_factors(6)
+```
+
+Next, I will build a dataframe to view the relationships for a greater set of numbers (from 0 to 10):
+
+```{r}
+#| label: build-dataframe
+
+factors_of_factorials <- tibble(n = 1:10) |> 
+  mutate(
+    n_factorial = factorial(n),
+    factors_of_n_factorial = map(n_factorial, get_factors),
+    total_factors = map_int(factors_of_n_factorial, length)
+  )
+
+kable(factors_of_factorials)
+```
+
+# Plots
+
+Finally I can plot the results on a line chart.
+
+```{r}
+#| label: line-chart
+
+factors_of_factorials |> 
+  ggplot(aes(x = n, y = total_factors)) +
+  geom_line()
+```
+
+# Conclusion
+
+The line chart shows that the relationship between an integer $n$ and the number of factors that its factorial has is exponentially increasing.
