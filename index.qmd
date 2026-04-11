@@ -1,5 +1,12 @@
 ---
-title: "index"
-format: html
+title: "Clare does maths"
+listing:
+  contents: 
+    - "number_theory/*.qmd"
+    - "calculus/*.qmd"
+  type: default
+  categories: true
+  sort: "date desc"
 ---
 
+Welcome to my maths notes! This site tracks my progress through various online courses, covering everything from number theory to calculus.
