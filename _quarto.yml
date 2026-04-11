@@ -15,6 +15,11 @@ website:
 format:
   html:
     theme: flatly
+    page-layout: full
+    grid:
+      sidebar-width: 250px
+      body-width: 1500px
+      margin-width: 250px
     css: styles.css
     toc: true
     code-fold: true
