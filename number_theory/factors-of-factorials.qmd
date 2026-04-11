@@ -1,12 +1,20 @@
 ---
 title: "Factors of factorials"
+subtitle: "Number theory"
 author: "Clare Gibson"
-date: "2025-07-06"
-format:
-  gfm:
-    toc: true
-    toc-depth: 2
+date: last-modified
+description: "Understanding the relationship between factorials and factors"
+categories: [Number Theory, Factors, Factorial]
 ---
+
+```{r setup}
+#| warnings: false
+#| output: false
+
+library(here)
+library(tidyverse)
+library(knitr)
+```
 
 # Introduction
 In maths, there is a concept called **factorial** which works like this:
@@ -51,33 +59,28 @@ The relationship between factorials and factors looks like this:
 
 # Analysis
 
-In the `src/factors-of-factorials.R` script I have written a function called `get_factors()` which takes an integer as input and returns a list of the factors of that integer. I will load the script so that I can use this function.
+First, I write a function called `get_factors()` which takes an integer as input and returns a list of the factors of that integer.
 
-```{r}
-#| label: setup
-#| warnings: false
-#| output: false
+```{r get-factors}
 
-library(here)
-library(tidyverse)
-library(knitr)
-
-source(here("src/factors-of-factorials.R"))
+# Function to return the list of factors of any number
+get_factors <- function(x) {
+  if (x <= 0) return(integer(0))
+  res <- which(x %% seq_len(x) == 0)
+  return(res)
+}
 ```
+
 
 I can test the function using one of the integers we already outlined above.
 
-```{r}
-#| label: test-function
-
+```{r test-get-factors}
 get_factors(6)
 ```
 
 Next, I will build a dataframe to view the relationships for a greater set of numbers (from 0 to 10):
 
-```{r}
-#| label: build-dataframe
-
+```{r build-dataframe}
 factors_of_factorials <- tibble(n = 1:10) |> 
   mutate(
     n_factorial = factorial(n),
@@ -92,9 +95,7 @@ kable(factors_of_factorials)
 
 Finally I can plot the results on a line chart.
 
-```{r}
-#| label: line-chart
-
+```{r line-chart}
 factors_of_factorials |> 
   ggplot(aes(x = n, y = total_factors)) +
   geom_line()

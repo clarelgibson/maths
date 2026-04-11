@@ -1,0 +1,60 @@
+/* Make block equations stand out with a slight background and padding */
+.math.display {
+  display: block;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-left: 4px solid #007bff;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+/* Ensure inline math doesn't break line-height */
+.math.inline {
+  vertical-align: middle;
+}
+
+/* Center the main content and optimize line length for reading */
+.quarto-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Improve paragraph spacing for better scanning of notes */
+p {
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+/* Make headers more distinct */
+h1, h2, h3 {
+  color: #2c3e50;
+  font-weight: 700;
+  margin-top: 2rem;
+}
+
+/* Add a subtle border to code blocks */
+pre.sourceCode {
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  background-color: #f6f8fa;
+}
+
+/* Style the R output specifically (e.g., calculation results) */
+.cell-output-stdout pre {
+  background-color: #ffffff;
+  border: 1px dashed #cccccc;
+  color: #333;
+}
+
+/* Make the active section in the TOC bold */
+.sidebar nav[role=doc-toc] ul li > a.active {
+  font-weight: bold;
+  color: #007bff;
+  border-left: 2px solid #007bff;
+}
+
+/* Slightly smaller font for the TOC to fit more on screen */
+#TOC {
+  font-size: 0.85rem;
+}

@@ -1,0 +1,22 @@
+project: 
+  type: website
+  output-dir: docs
+  
+website:
+  title: "My maths notes"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - text: "Topics"
+        menu:
+          - number_theory/factors-of-factorials.qmd
+          
+format:
+  html:
+    theme: flatly
+    css: styles.css
+    toc: true
+    code-fold: true
+    number-sections: true
+    date-format: "DD MMM YYYY"
