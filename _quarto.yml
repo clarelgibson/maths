@@ -15,8 +15,8 @@ website:
 format:
   html:
     theme: flatly
-    mainfont: "Montserrat"
-    monofont: "JetBrains Mono"
+    #mainfont: "Montserrat"
+    #monofont: "JetBrains Mono"
     page-layout: full
     css: styles.css
     #theme-algo: light
