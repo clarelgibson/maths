@@ -1,5 +1,5 @@
 ---
-title: "Clare does maths"
+#title: "Maths"
 listing:
   contents: 
     - "number_theory/*.qmd"
@@ -10,3 +10,7 @@ listing:
 ---
 
 Welcome to my maths notes! This site tracks my progress through various online courses, covering everything from number theory to calculus.
+
+Courses I have taken include:
+
+- [A-level Mathematics](https://learning.edx.org/course/course-v1:ImperialX+alm001+3T2018/home) by ImperialX on [edX](https://home.edx.org)

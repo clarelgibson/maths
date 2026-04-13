@@ -1,60 +1,67 @@
-/* Make block equations stand out with a slight background and padding */
-.math.display {
-  display: block;
-  margin: 1.5rem 0;
-  padding: 1rem;
-  background-color: #f8f9fa;
-  border-left: 4px solid #007bff;
-  border-radius: 4px;
-  overflow-x: auto;
+/* The Import - Must be at the very top */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+/* Theme colours */
+:root {
+  --primary-color: #202C39;   /* Headers, Links, Buttons */
+  --accent-color: #FF4F5C;    /* Highlights, Callouts */
+  --sidebar-bg: #405872;      /* Optional: Sidebar background */
+  --text-main: #202C39;           /* Main body text */
 }
 
-/* Ensure inline math doesn't break line-height */
-.math.inline {
-  vertical-align: middle;
+.navbar {
+  background-color: var(--primary-color) !important;
 }
 
-/* Center the main content and optimize line length for reading */
-.quarto-container {
-  max-width: 900px;
-  margin: 0 auto;
+.navbar-brand, .nav-link {
+  color: #202C39 !important; /* Adjust if your primary color is very light */
 }
 
-/* Improve paragraph spacing for better scanning of notes */
-p {
+a {
+  color: var(--accent-color);
+  text-decoration: underline;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.quarto-sidebar-toggle, .sidebar-title {
+  color: var(--primary-color) !important;
+}
+
+/* Change the "Active" page color in the sidebar */
+.sidebar nav[role=doc-toc] ul li > a.active, 
+.sidebar nav[role=doc-sidebar] ul li > a.active {
+  color: var(--accent-color) !important;
+  border-left: 3px solid var(--accent-color);
+}
+
+/* 2. Headings (Bebas Neue) */
+h1, h2, h3, h4, .navbar-brand, .sidebar-title {
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-weight: 400; /* Bebas Neue usually only has one weight */
+  letter-spacing: 0.05em; /* A little extra space looks great with all-caps */
+  font-size: 3rem; /* Bebas looks better when it's large */
+}
+
+/* 3. Body Text (Montserrat) */
+body {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 400;
   line-height: 1.7;
-  margin-bottom: 1.25rem;
 }
 
-/* Make headers more distinct */
-h1, h2, h3 {
-  color: #2c3e50;
-  font-weight: 700;
-  margin-top: 2rem;
+/* 4. Code Blocks (JetBrains Mono) */
+code, pre, .sourceCode, kbd, samp {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.95em;
 }
 
-/* Add a subtle border to code blocks */
-pre.sourceCode {
-  border: 1px solid #e1e4e8;
-  border-radius: 8px;
-  background-color: #f6f8fa;
-}
-
-/* Style the R output specifically (e.g., calculation results) */
-.cell-output-stdout pre {
-  background-color: #ffffff;
-  border: 1px dashed #cccccc;
-  color: #333;
-}
-
-/* Make the active section in the TOC bold */
-.sidebar nav[role=doc-toc] ul li > a.active {
-  font-weight: bold;
-  color: #007bff;
-  border-left: 2px solid #007bff;
-}
-
-/* Slightly smaller font for the TOC to fit more on screen */
-#TOC {
-  font-size: 0.85rem;
+/* 5. Math Adjustments */
+/* Since Montserrat is a bit "round", we want to make sure the math matches */
+.math.inline {
+  font-family: inherit; 
 }
